@@ -1,17 +1,16 @@
 package api.Data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class SuccessfulLogin {
-    String email;
-    String password;
-    String token;
+    String email = "eve.holt@reqres.in" ;
+    String password = "cityslicka";
+    String token = "QpwL5tke4Pnpja7X4";
 
 }

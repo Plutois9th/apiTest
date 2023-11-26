@@ -1,16 +1,14 @@
 package api.Data;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-@JsonSerialize
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Register {
 
-    private String email;
-
-    public Register(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    private String password;
+    private String email = "eve.holt@reqres.in";
+    private String password = "pistol";
 }
+

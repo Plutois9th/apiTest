@@ -1,21 +1,15 @@
 package api.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserTime {
     private String name;
     private String job;
-    public UserTime (){
 
-    }
-    public UserTime(String name, String job) {
-        this.name = name;
-        this.job = job;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getJob() {
-        return job;
-    }
 }
