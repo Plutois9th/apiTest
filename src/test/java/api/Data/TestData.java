@@ -20,8 +20,8 @@ public class TestData {
     private Integer singleUserId = 2;
     private String singleUserLastName = "Weaver";
     private String singleUserEmail = "janet.weaver@reqres.in";
-    private String createUserName = "Yuliya";
-    private String createUserJob = "Stargazer";
+    private String createUserName = "morpheus";
+    private String createUserJob = "leader";
     private String succsessLoginEmail = "eve.holt@reqres.in";
     private String succsessLoginPassword = "cityslicka";
     private String succsessLoginToken = "QpwL5tke4Pnpja7X4";

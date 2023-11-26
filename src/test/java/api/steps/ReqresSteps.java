@@ -4,12 +4,15 @@ import api.Data.*;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import org.junit.Assert;
+import org.junit.Test;
+
 import java.time.Clock;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
+
+import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.junit.Assert.assertEquals;
 
 
@@ -19,7 +22,8 @@ public class ReqresSteps {
 
     TestData testData = new TestData();
 
-@Step("Проверка совпадения id пользователя с id его аватара")
+//@Step("Проверка совпадения id пользователя с id его аватара")
+    @Test
     public void  checkAvatarAndIdTest() {
     List<UserData> users = given()
             .log().all()
@@ -42,7 +46,8 @@ public class ReqresSteps {
     }
 
 }
-    @Step("Регистрация нового пользователя")
+    //@Step("Регистрация нового пользователя")
+    @Test
     public void successRegTest() {
         Register user = new Register(testData.getRegEmail(),testData.getRegPassword());
         SuccessReg successReg = given()
@@ -61,7 +66,8 @@ public class ReqresSteps {
 
     }
 
-    @Step("Регистрация без пароля")
+   // @Step("Регистрация без пароля")
+    @Test
     public void unSuccessRegTest() {
 
         Register user = new Register(testData.getUnSuccsessRegEmail(),
@@ -79,7 +85,8 @@ public class ReqresSteps {
 
     }
 
-    @Step("Проверка корректной сортировки дат")
+    //@Step("Проверка корректной сортировки дат")
+    @Test
     public void sortedYearsTest() {
         List<ColorData> colors = given()
                 .log().all()
@@ -95,7 +102,8 @@ public class ReqresSteps {
 
     }
 
-    @Step("Удаление пользователя")
+   // @Step("Удаление пользователя")
+    @Test
     public void deleteUser() {
             given()
                 .log().all()
@@ -106,7 +114,8 @@ public class ReqresSteps {
                 .statusCode(204);
     }
 
-    @Step("Проверка времени обновления пользователя")
+    //@Step("Проверка времени обновления пользователя")
+    @Test
     public void timeTest() {
         UserTime userTime = new UserTime(testData.getUpdateName(), testData.getUpdateJob());
         UserTimeRes response = given()
@@ -124,7 +133,8 @@ public class ReqresSteps {
 
     }
 
-    @Step("Проверка отсутствия пользователя")
+   // @Step("Проверка отсутствия пользователя")
+    @Test
     public void userNotFound() {
         List<UserData> users = given()
                 .log().all()
@@ -136,7 +146,8 @@ public class ReqresSteps {
                 .extract().body().jsonPath().getList("data", UserData.class);
     }
 
-    @Step("Проверка отложенного ответа")
+    //@Step("Проверка отложенного ответа")
+    @Test
     public void delayedResponse() {
         List<UserData> users = given()
                 .log().all()
@@ -149,7 +160,8 @@ public class ReqresSteps {
 
     }
 
-    @Step("Проверка id и имени одного пользователя")
+   // @Step("Проверка id и имени одного пользователя")
+    @Test
     public void singleUserCheck() {
 
         UserData2 users = given()
@@ -167,23 +179,27 @@ public class ReqresSteps {
         Assert.assertEquals(users.getData().getId(), testData.getSingleUserId());
     }
 
-    @Step("Создание пользователя")
-
+   // @Step("Создание пользователя")
+   @Test
     public void createUser() {
-        Register user = new Register(testData.getCreateUserName(), testData.getCreateUserJob());
+        CreateUser createUser = new CreateUser(testData.getCreateUserName(),
+                testData.getCreateUserJob());
         given()
-                .body(user)
+                .body(createUser)
                 .log().all()
                 .contentType(ContentType.JSON)
                 .when()
                 .post("/api/users")
                 .then().log().all()
                 .statusCode(201);
-               // .body("name", is("yuliya"))
-               // .body("job", is("stargazer")); ???
+
+              // .body("name", is("morpheus"))
+              // .body("job", is("leader"));
+
     }
 
-    @Step("Успешный логин")
+    //@Step("Успешный логин")
+    @Test
     public void successLogin() {
 
         Register user = new Register(testData.getSuccsessLoginEmail(),
