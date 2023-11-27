@@ -185,16 +185,13 @@ public class ReqresSteps {
         CreateUser createUser = new CreateUser(testData.getCreateUserName(),
                 testData.getCreateUserJob());
         given()
-                .body(createUser)
                 .log().all()
                 .contentType(ContentType.JSON)
+                .body(createUser)
                 .when()
-                .post("/api/users")
+                .post(URL+"/api/users")
                 .then().log().all()
                 .statusCode(201);
-
-              // .body("name", is("morpheus"))
-              // .body("job", is("leader"));
 
     }
 
