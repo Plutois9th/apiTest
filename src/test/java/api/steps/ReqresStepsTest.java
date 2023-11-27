@@ -4,7 +4,6 @@ import api.Data.*;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import org.junit.Assert;
-import org.junit.Test;
 
 import java.time.Clock;
 import java.util.List;
@@ -17,13 +16,13 @@ import static org.junit.Assert.assertEquals;
 
 
 
-public class ReqresSteps {
+public class ReqresStepsTest {
     private final static String URL = "https://reqres.in";
 
     TestData testData = new TestData();
 
-//@Step("Проверка совпадения id пользователя с id его аватара")
-    @Test
+@Step("Проверка совпадения id пользователя с id его аватара")
+    //@Test
     public void  checkAvatarAndIdTest() {
     List<UserData> users = given()
             .log().all()
@@ -46,8 +45,8 @@ public class ReqresSteps {
     }
 
 }
-    //@Step("Регистрация нового пользователя")
-    @Test
+    @Step("Регистрация нового пользователя")
+    //@Test
     public void successRegTest() {
         Register user = new Register(testData.getRegEmail(),testData.getRegPassword());
         SuccessReg successReg = given()
@@ -66,8 +65,8 @@ public class ReqresSteps {
 
     }
 
-   // @Step("Регистрация без пароля")
-    @Test
+   @Step("Регистрация без пароля")
+   // @Test
     public void unSuccessRegTest() {
 
         Register user = new Register(testData.getUnSuccsessRegEmail(),
@@ -85,8 +84,8 @@ public class ReqresSteps {
 
     }
 
-    //@Step("Проверка корректной сортировки дат")
-    @Test
+    @Step("Проверка корректной сортировки дат")
+    //@Test
     public void sortedYearsTest() {
         List<ColorData> colors = given()
                 .log().all()
@@ -101,9 +100,8 @@ public class ReqresSteps {
         assertEquals(sortedYears, years);
 
     }
-
-   // @Step("Удаление пользователя")
-    @Test
+    @Step("Удаление пользователя")
+    //@Test
     public void deleteUser() {
             given()
                 .log().all()
@@ -114,8 +112,8 @@ public class ReqresSteps {
                 .statusCode(204);
     }
 
-    //@Step("Проверка времени обновления пользователя")
-    @Test
+    @Step("Проверка времени обновления пользователя")
+    //@Test
     public void timeTest() {
         UserTime userTime = new UserTime(testData.getUpdateName(), testData.getUpdateJob());
         UserTimeRes response = given()
@@ -133,8 +131,8 @@ public class ReqresSteps {
 
     }
 
-   // @Step("Проверка отсутствия пользователя")
-    @Test
+   @Step("Проверка отсутствия пользователя")
+    //@Test
     public void userNotFound() {
         List<UserData> users = given()
                 .log().all()
@@ -146,8 +144,8 @@ public class ReqresSteps {
                 .extract().body().jsonPath().getList("data", UserData.class);
     }
 
-    //@Step("Проверка отложенного ответа")
-    @Test
+    @Step("Проверка отложенного ответа")
+    //@Test
     public void delayedResponse() {
         List<UserData> users = given()
                 .log().all()
@@ -160,8 +158,8 @@ public class ReqresSteps {
 
     }
 
-   // @Step("Проверка id и имени одного пользователя")
-    @Test
+   @Step("Проверка id и имени одного пользователя")
+    //@Test
     public void singleUserCheck() {
 
         UserData2 users = given()
@@ -179,8 +177,8 @@ public class ReqresSteps {
         Assert.assertEquals(users.getData().getId(), testData.getSingleUserId());
     }
 
-   // @Step("Создание пользователя")
-   @Test
+   @Step("Создание пользователя")
+   //@Test
     public void createUser() {
         CreateUser createUser = new CreateUser(testData.getCreateUserName(),
                 testData.getCreateUserJob());
@@ -195,8 +193,8 @@ public class ReqresSteps {
 
     }
 
-    //@Step("Успешный логин")
-    @Test
+    @Step("Успешный логин")
+    //@Test
     public void successLogin() {
 
         Register user = new Register(testData.getSuccsessLoginEmail(),

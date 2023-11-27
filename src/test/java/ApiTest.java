@@ -1,14 +1,14 @@
-package api.tests;
-
-import api.steps.ReqresSteps;
+import api.steps.ReqresStepsTest;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
+
+
 public class ApiTest {
-    ReqresSteps reqresSteps = new ReqresSteps();
-    @Test
+    ReqresStepsTest reqresSteps = new ReqresStepsTest();
+   @Test
     @DisplayName("Проверка списка пользователей")
-    void checkUserList(){
+   public void checkUserList(){
         reqresSteps.delayedResponse();
         reqresSteps.checkAvatarAndIdTest();
         reqresSteps.sortedYearsTest();
@@ -16,18 +16,18 @@ public class ApiTest {
         reqresSteps.singleUserCheck();
 
     }
-    @Test
+   @Test
     @DisplayName("Проверка создания, удаления и регистрации пользователей")
-    void checkCreateAndRegister(){
+   public void checkCreateAndRegister(){
         reqresSteps.createUser();
         reqresSteps.deleteUser();
         reqresSteps.successRegTest();
         reqresSteps.unSuccessRegTest();
         reqresSteps.userNotFound();
     }
-    @Test
+   @Test
     @DisplayName("Проверка логина пользователей")
-    void checkUserLogin(){
+   public void checkUserLogin(){
         reqresSteps.successLogin();
 
     }
